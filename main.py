@@ -1,9 +1,14 @@
 import pandas as pd
 from pprint import pprint
+import shutil, os
+
 
 df = pd.read_csv("train.csv")
 for row in df.filename:
-    print(row)
+    try:
+        shutil.move("images/"+row, 'train')
+    except:
+        continue
 #  print(row[8])
 
 
