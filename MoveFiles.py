@@ -1,11 +1,21 @@
 import pandas as pd
-from pprint import pprint
 import shutil, os
+import cv2
+from tqdm import tqdm
 
+import csv
 
-df = pd.read_csv("train.csv")
-for row in df.filename:
+f = open('train.csv')
+csv_f = csv.reader(f)
+
+for row in tqdm(csv_f):
     try:
-        shutil.move("images/"+row, 'train')
-    except:
-        continue
+        path = 'images/train/'+row[0]
+        img = cv2.imread(path, cv2.IMREAD_GRAYSCALE)
+        crop_img =img[int(row[2]):int(row[4]), int(row[1]):int(row[3])] 
+        cv2.imwrite('images/testimg/'+row[0],crop_img)
+
+    except Exception as e:
+        print(str(e))
+        pass
+        
