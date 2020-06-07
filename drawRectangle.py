@@ -3,7 +3,7 @@ import random
 from tqdm import tqdm
 
 
-NUM_OF_REC = 1
+NUM_OF_REC = 500
 
 # path  
 path = r'C:\Users\zache\Documents\Machine Learning\images\Rec/'
